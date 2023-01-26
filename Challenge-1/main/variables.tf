@@ -57,7 +57,7 @@ variable "gke-pod-ip-name-euw1-1" {
 }
 
 variable "gke-pod-ip-range-euw1-1" {
-    default = "10.118.0.0/18"
+    default = "*.*.*.*/18"
 }
 
 variable "gke-svc-ip-name-euw1-1" {
@@ -66,16 +66,6 @@ variable "gke-svc-ip-name-euw1-1" {
 
 variable "gke-svc-ip-range-euw1-1" {
     default = "*.*.*.*/18"
-}
-
-//Developer VM
-
-
-
-//Firwall Details
-
-variable "gke-firewall-rule-name" {
-    default = "prod-gke-developervm"
 }
 
 //PGDB Name
@@ -140,7 +130,7 @@ variable "gke-node-name" {
 }
 
 variable "master-cidr-ip" {
-  default = "172.16.0.32/28"
+  default = "*.*.*.*/28"
 }
 
 variable "gke-machine-type" {
