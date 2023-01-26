@@ -48,26 +48,7 @@ data "google_compute_network" "shared-network" {
     name = "${var.shared-network-name}"
     project = "${var.shared-project}"
 }
-
-data "google_compute_subnetwork" "shared-prod-pvt-subnetwork" {
-  project = "${var.shared-project}"
-  name   = "${var.prod-private-subnet}"
-  region = "us-central1"
-}
-
-data "google_compute_subnetwork" "shared-gke-subnetwork" {
-  project = "${var.shared-project}"
-  name   = "${var.prod-gke-subnet}"
-  region = "us-central1"
-}
-
-data "google_compute_subnetwork" "shared-prod-pub-subnetwork" {
-  project = "${var.shared-project}"
-  name   = "${var.prod-public-subnet}"
-  region = "us-central1"
-}
-
-
+    
 data "google_compute_subnetwork" "shared-prod-pvt-subnetwork-euw1-1" {
   project = "${var.shared-project}"
   name   = "${var.prod-private-subnet-euw1-1}"
@@ -118,20 +99,6 @@ module "gke" {
   number-of-nodes = "${var.number-of-nodes}"
   gke-node-name = "${var.gke-node-name}"
   master-cidr-ip = "${var.master-cidr-ip}"
-}
-
-
-resource "google_compute_firewall" "prod-gke-fw-rule" {
-  project = "${var.shared-project}"
-  name = "${var.gke-firewall-rule-name}"
-  network = "shared-vpc"
-  allow {
-      protocol = "tcp"
-      ports = ["80"]
-  }
-
-  source_tags = ["${var.developer-vm-tag}"]  
-  target_tags = ["${var.gke-tag}"]   
 }
 
 resource "google_binary_authorization_policy" "policy" {
