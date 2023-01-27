@@ -1,6 +1,6 @@
 variable "project-name" {}
 variable "vpc-id" {}
-#variable "shared-project" {}
+variable "shared-project" {}
 variable "db-name" {}
 
 variable "iam-roles" {
