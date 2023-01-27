@@ -32,7 +32,7 @@ resource "google_sql_database_instance" "pgsql-instance" {
   region = "europe-west1"
   project = "${var.project-name}"
   database_version = "POSTGRES_12"
-  #depends_on = [google_service_networking_connection.private_vpc_connection]
+  depends_on = [google_service_networking_connection.private_vpc_connection]
   deletion_protection = false
   settings {
     tier = "db-custom-4-15360"
