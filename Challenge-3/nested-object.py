@@ -17,5 +17,5 @@ def lastkey(obj):
         print("Wrong Value / Empty Dictionary Check again")
 
 obj = {'x': {'y': {'z': 'a'}}}
-value = findvalue(obj, 'y')
+value = findvalue(obj, 'z')
 print("value =", value)
